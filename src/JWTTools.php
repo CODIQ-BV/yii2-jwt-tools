@@ -101,6 +101,14 @@ final class JWTTools
         return new self($secretKey, $options);
     }
 
+    public function withData($data = []): self
+    {
+        foreach($data as $k => $v){
+            $this->payload->addExtraAttribute($k, $v);
+        }
+        return $this;
+    }
+    
     /**
      * @param  ActiveRecord $model
      * @param  array $attributes
